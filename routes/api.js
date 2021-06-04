@@ -45,4 +45,14 @@ router.put("/api/workouts/:id", async (req, res) => {
   }
 });
 
+router.get("/api/workouts/range", async (req, res) => {
+  console.log(req.body);
+  try {
+    const results = await Workout.find({});
+    res.json(results);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 module.exports = router;
