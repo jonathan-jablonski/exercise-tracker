@@ -33,7 +33,7 @@ router.put("/api/workouts/:id", async (req, res) => {
   }
 });
 
-router.put("/api/workouts/:id", async (req, res) => {
+router.delete("/api/workouts/:id", async (req, res) => {
   console.log(req.body);
   try {
     const results = await Workout.findByIdAndDelete(req.params.id, {
@@ -60,16 +60,6 @@ router.get("/api/workouts/range", (req, res) => {
     .then((workoutDB) => {
       console.log(workoutDB);
       res.json(workoutDB);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-router.delete("/api/workouts", ({ body }, res) => {
-  Workout.findByIdAndDelete(body.id)
-    .then(() => {
-      res.json(true);
     })
     .catch((err) => {
       res.json(err);
